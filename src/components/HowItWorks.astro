@@ -1,0 +1,68 @@
+---
+import Container from "./Container.astro";
+
+const steps = [
+    {
+        number: "01",
+        title: "Audit",
+        desc: "We review your website, online presence, lead flow, and follow-up process to identify exactly where leads are being lost.",
+        icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
+    },
+    {
+        number: "02",
+        title: "Build",
+        desc: "We create or improve the pages, systems, and tracking needed to convert more leads — from website to CRM to automations.",
+        icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+    },
+    {
+        number: "03",
+        title: "Launch",
+        desc: "We help launch your website, ads, forms, CRM, and automations so everything is running and capturing leads from day one.",
+        icon: "M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z",
+    },
+    {
+        number: "04",
+        title: "Optimize",
+        desc: "We track what's working and continuously improve the system — ads, landing pages, follow-up flows — so your results keep improving.",
+        icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+    },
+];
+---
+
+<section id="process" class="py-20 md:py-28 bg-slate-50">
+    <Container>
+        <div class="max-w-2xl mx-auto text-center mb-14 reveal">
+            <span class="inline-block text-indigo-600 text-sm font-semibold uppercase tracking-widest mb-3">How It Works</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+                A Simple Process, Built Around Results
+            </h2>
+            <p class="mt-4 text-slate-500 text-lg">
+                No long agency contracts or confusing timelines. We follow a straightforward process to get your systems working fast.
+            </p>
+        </div>
+
+        <!-- Steps -->
+        <div class="relative max-w-5xl mx-auto">
+            <!-- Connector line (desktop) -->
+            <div aria-hidden="true" class="hidden lg:block absolute top-[52px] left-[calc(12.5%+16px)] right-[calc(12.5%+16px)] h-0.5 bg-gradient-to-r from-indigo-200 via-violet-300 to-indigo-200"></div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {steps.map((step, i) => (
+                    <div class="reveal relative flex flex-col items-center text-center" data-dir="scale" data-delay={String(i * 100)}>
+                        <!-- Number circle -->
+                        <div class="relative z-10 w-[52px] h-[52px] rounded-full bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-200 mb-5">
+                            <span class="text-white font-bold text-sm">{step.number}</span>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                                <path stroke-linecap="round" stroke-linejoin="round" d={step.icon} />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">{step.title}</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </Container>
+</section>

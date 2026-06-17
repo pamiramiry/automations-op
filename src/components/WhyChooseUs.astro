@@ -1,0 +1,67 @@
+---
+import Container from "./Container.astro";
+
+const reasons = [
+    {
+        icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z",
+        title: "We Build Growth Systems, Not Just Websites",
+        desc: "A website alone won't grow your business. We connect your website, ads, CRM, and automations into one system that captures and converts leads.",
+    },
+    {
+        icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
+        title: "Designed Specifically for Local Businesses",
+        desc: "We don't work with everyone. We specialize in local service businesses, which means our process, pricing, and strategy are built for your type of business.",
+    },
+    {
+        icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
+        title: "Conversion-Focused at Every Step",
+        desc: "Everything we build is designed to turn visitors into leads and leads into customers — not just to look good.",
+    },
+    {
+        icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+        title: "Simple, Clear Process — No Agency Fluff",
+        desc: "No confusing proposals, inflated retainers, or vague deliverables. We tell you what we're building, how long it takes, and what results to expect.",
+    },
+    {
+        icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+        title: "Clear Communication Throughout",
+        desc: "You'll always know what's happening with your project. We keep things simple and keep you in the loop without burying you in jargon.",
+    },
+    {
+        icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+        title: "Built to Support Ads, SEO & Follow-Up",
+        desc: "Your website isn't just built for today. It's structured to support paid ads, local SEO, and lead follow-up from day one.",
+    },
+];
+---
+
+<section class="py-20 md:py-28 bg-slate-50">
+    <Container>
+        <div class="max-w-2xl mx-auto text-center mb-14 reveal">
+            <span class="inline-block text-indigo-600 text-sm font-semibold uppercase tracking-widest mb-3">Why Work With Us</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+                Why Local Businesses Work With Us
+            </h2>
+            <p class="mt-4 text-slate-500 text-lg">
+                We're not a big agency and we're not a freelancer. We're a focused growth partner built for local businesses.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {reasons.map((r, i) => (
+                <div
+                    class="reveal bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200" data-dir="scale"
+                    data-delay={String(i * 80)}
+                >
+                    <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d={r.icon} />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2 text-[0.95rem] leading-snug">{r.title}</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">{r.desc}</p>
+                </div>
+            ))}
+        </div>
+    </Container>
+</section>

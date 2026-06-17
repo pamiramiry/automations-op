@@ -1,0 +1,67 @@
+---
+import Container from "./Container.astro";
+
+const industries = [
+    {
+        icon: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z",
+        title: "Restaurants & Cafes",
+        desc: "Better websites, online menu pages, and ad campaigns that drive reservations, orders, and walk-ins.",
+    },
+    {
+        icon: "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4",
+        title: "Car Detailing, Tint & Wrap Shops",
+        desc: "Lead gen pages, instant quote forms, and automated follow-up for every new inquiry that comes in.",
+    },
+    {
+        icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+        title: "Home Service Businesses",
+        desc: "Booking pages, Google ads, and instant lead follow-up so every call and form gets handled immediately.",
+    },
+    {
+        icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+        title: "Clinics & Wellness Businesses",
+        desc: "Appointment funnels, intake form automation, retargeting ads, and patient follow-up workflows.",
+    },
+    {
+        icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064",
+        title: "Gyms & Fitness Businesses",
+        desc: "Membership lead pages, trial offer promotions, and CRM setup to track and convert every new lead.",
+    },
+    {
+        icon: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+        title: "Local Service Providers",
+        desc: "Websites, ads, and automation tailored to your service area so you get more calls, more bookings, more revenue.",
+    },
+];
+---
+
+<section id="who-we-help" class="py-20 md:py-28 bg-white">
+    <Container>
+        <div class="max-w-2xl mx-auto text-center mb-14 reveal">
+            <span class="inline-block text-indigo-600 text-sm font-semibold uppercase tracking-widest mb-3">Who We Help</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+                Built for Local Businesses That Want More Leads
+            </h2>
+            <p class="mt-4 text-slate-500 text-lg">
+                We work with local service businesses that are serious about growing and ready to build proper systems.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {industries.map((ind, i) => (
+                <div
+                    class="reveal group bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-indigo-100 transition-all duration-200" data-dir="scale"
+                    data-delay={String(i * 80)}
+                >
+                    <div class="w-11 h-11 rounded-xl bg-indigo-50 group-hover:bg-indigo-100 flex items-center justify-center mb-4 transition-colors duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d={ind.icon} />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">{ind.title}</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">{ind.desc}</p>
+                </div>
+            ))}
+        </div>
+    </Container>
+</section>

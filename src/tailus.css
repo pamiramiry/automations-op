@@ -1,7 +1,75 @@
 @import 'tailwindcss';
 
 @theme {
-    --color-primary : var(--color-indigo-600);
-    --color-secondary : var(--color-orange-600);
-    --color-info : var(--color-blue-600);
+    --color-primary: var(--color-indigo-600);
+    --color-primary-hover: var(--color-indigo-700);
+    --color-secondary: var(--color-violet-600);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Gradient button utility */
+.btn-gradient {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    transition: opacity 0.2s, transform 0.15s;
+}
+.btn-gradient:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+.btn-gradient:active {
+    transform: translateY(0);
+}
+
+/* Gradient text */
+.text-gradient {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Scroll reveal keyframes */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-24px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* Base hidden state */
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+}
+.reveal[data-dir="left"]  { transform: translateX(-24px); }
+.reveal[data-dir="right"] { transform: translateX(24px); }
+.reveal[data-dir="scale"] { transform: scale(0.96); }
+
+/* Visible state — triggered by JS adding .visible */
+.reveal.visible                      { animation: fadeInUp    0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.reveal[data-dir="left"].visible     { animation: fadeInLeft  0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.reveal[data-dir="right"].visible    { animation: fadeInRight 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.reveal[data-dir="scale"].visible    { animation: fadeInScale 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Fallback: show content if scripting is disabled */
+@media (scripting: none) {
+    .reveal { opacity: 1; transform: none; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal[data-dir] { opacity: 1; transform: none; animation: none; }
 }

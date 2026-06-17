@@ -9,11 +9,11 @@ import "./../tailus.css"
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <meta name="description" content="Template built with tailwindcss using Tailus blocks v2" />
-        <title>Tailus astro theme</title>
+        <meta name="description" content="We help local businesses turn website visitors, ad clicks, and form submissions into real customers — with websites, paid ads, CRM integrations, and automated follow-up." />
+        <title>Automations OP — Digital Growth for Local Businesses</title>
 
         <AstroFont
             config={[
@@ -24,14 +24,43 @@ import "./../tailus.css"
                     display: "swap",
                     selector: "html",
                     fallback: "sans-serif",
-                    googleFontsURL: 'https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap',
+                    googleFontsURL: 'https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap',
                 },
             ]}
         />
     </head>
-    <body class="bg-white dark:bg-gray-950">
+    <body class="bg-white text-slate-900 antialiased">
         <AppHeader />
-        <slot />
+        <main>
+            <slot />
+        </main>
         <AppFooter />
+
+        <script>
+            // Scroll reveal
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const delay = el.dataset.delay ? parseInt(el.dataset.delay) : 0;
+                        setTimeout(() => el.classList.add('visible'), delay);
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0 });
+            reveals.forEach((el) => observer.observe(el));
+
+            // Subtle hero parallax
+            const blobA = document.getElementById('blob-a');
+            const blobB = document.getElementById('blob-b');
+            if (blobA && blobB) {
+                window.addEventListener('scroll', () => {
+                    const y = window.scrollY;
+                    blobA.style.transform = `translateY(${y * 0.18}px)`;
+                    blobB.style.transform = `translateY(${y * 0.08}px)`;
+                }, { passive: true });
+            }
+        </script>
     </body>
 </html>
